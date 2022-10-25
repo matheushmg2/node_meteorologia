@@ -4,6 +4,10 @@
   "description": "Estudo sobre Typescript Node.js API",
   "main": "index.js",
   "scripts": {
+    "dev": "yarn build && node dist/src/index.js",
+    "lint": "eslint ./src ./test --ext .ts",
+    "lint:fix": "eslint ./src ./test --ext .ts --fix",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +24,16 @@
   "bugs": {
     "url": "https://github.com/matheushmg2/node_meteorologia/issues"
   },
-  "homepage": "https://github.com/matheushmg2/node_meteorologia#readme"
+  "homepage": "https://github.com/matheushmg2/node_meteorologia#readme",
+  "devDependencies": {
+    "@types/module-alias": "^2.0.1",
+    "@types/node": "^18.11.5",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint": "^8.26.0",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "module-alias": "^2.2.2"
+  }
 }
