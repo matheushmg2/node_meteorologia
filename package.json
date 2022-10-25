@@ -1,0 +1,24 @@
+{
+  "name": "node_meteorologia",
+  "version": "1.0.0",
+  "description": "Estudo sobre Typescript Node.js API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheushmg2/node_meteorologia.git"
+  },
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "api"
+  ],
+  "author": "matheushmg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matheushmg2/node_meteorologia/issues"
+  },
+  "homepage": "https://github.com/matheushmg2/node_meteorologia#readme"
+}
