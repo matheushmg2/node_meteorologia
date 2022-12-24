@@ -1,9 +1,9 @@
-import { StormGlass } from '@src/clients/stormGlass';
+import { StormGlass } from '../../../src/clients/stormGlass';
 import stormGlassNormalizedResponse3HoursFixture from '@test/fixtures/stormglass_normalized_response_3_hours.json';
-import { Forecast, ForecastProcessingInternalError } from '../forecast';
-import { Beach, BeachPosition } from '@src/models/beach';
+import { ForeCast, ForecastProcessingInternalError } from '../forecast';
+import { Beach, BeachPosition } from '../../../src/models/beach';
 
-jest.mock('@src/clients/stormGlass');
+jest.mock('../../../src/clients/stormGlass');
 
 describe('Forecast Service', () => {
   const mockedStormGlassService = new StormGlass() as jest.Mocked<StormGlass>;
@@ -84,14 +84,14 @@ describe('Forecast Service', () => {
       },
     ];
 
-    const forecast = new Forecast(mockedStormGlassService);
+    const forecast = new ForeCast(mockedStormGlassService);
     const beachesWithRating = await forecast.processForecastForBeaches(beaches);
 
     expect(beachesWithRating).toEqual(expectedResponse);
   });
 
   it('should return an empty list when the beaches array is empty | deve retornar uma lista vazia quando o array de praias estiver vazio', async() => {
-    const forecast = new Forecast();
+    const forecast = new ForeCast();
     const response = await forecast.processForecastForBeaches([]);
 
     expect(response).toEqual([]);
@@ -108,7 +108,7 @@ describe('Forecast Service', () => {
     ];
     mockedStormGlassService.fetchPoints.mockRejectedValue('Error fetching data');
 
-    const forecast = new Forecast(mockedStormGlassService);
+    const forecast = new ForeCast(mockedStormGlassService);
     await expect(forecast.processForecastForBeaches(beaches)).rejects.toThrow(ForecastProcessingInternalError);
   });
 });

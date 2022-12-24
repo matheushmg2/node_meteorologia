@@ -9,7 +9,7 @@
     "lint": "eslint ./src ./test --ext .ts",
     "lint:fix": "eslint ./src ./test --ext .ts --fix",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "yarn test:unit && test:functional",
     "test:functional": "jest --projects ./test --runInBand",
     "test:unit": "jest",
     "test:unit_auto": "jest --watch",

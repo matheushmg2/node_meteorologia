@@ -3,14 +3,13 @@ import bodyParser from "body-parser";
 import { Application } from "express";
 import { ForecastController } from "./controllers/ForecastController";
 import "./util/module-alias";
-import * as database from '@src/database/database';
+import * as database from '../src/database/database';
 import { BeachesController } from "./controllers/BeachesController";
 
 export class SetupServer extends Server {
 
   constructor(private port = 4000) {
     super();
-
   }
 
   public async init(): Promise<void> {
@@ -39,6 +38,12 @@ export class SetupServer extends Server {
 
   public getApp(): Application {
     return this.app;
+  }
+
+  public start(): void {
+    this.app.listen(this.port, () => {
+      console.info('Server listening on port: ' + this.port);
+    });
   }
 
 }
