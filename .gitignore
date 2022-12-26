@@ -63,4 +63,4 @@ typings/
 # typescript compiled code
 dist/
 
-config/default.json
+config/
