@@ -1,13 +1,13 @@
-import { Server } from "@overnightjs/core";
-import bodyParser from "body-parser";
-import { Application } from "express";
-import { ForecastController } from "./controllers/ForecastController";
-import "./util/module-alias";
+import { Server } from '@overnightjs/core';
+import bodyParser from 'body-parser';
+import { Application } from 'express';
+import { ForecastController } from './controllers/ForecastController';
+import './util/module-alias';
 import * as database from '../src/database/database';
-import { BeachesController } from "./controllers/BeachesController";
+import { BeachesController } from './controllers/BeachesController';
+import { UsersController } from './controllers/UsersController';
 
 export class SetupServer extends Server {
-
   constructor(private port = 4000) {
     super();
   }
@@ -25,7 +25,13 @@ export class SetupServer extends Server {
   private setupController(): void {
     const forecastController = new ForecastController();
     const beachesController = new BeachesController();
-    this.addControllers([forecastController, beachesController]);
+    const usersController = new UsersController();
+
+    this.addControllers([
+      forecastController,
+      beachesController,
+      usersController,
+    ]);
   }
 
   private async databaseSetup(): Promise<void> {
@@ -45,5 +51,4 @@ export class SetupServer extends Server {
       console.info('Server listening on port: ' + this.port);
     });
   }
-
 }
