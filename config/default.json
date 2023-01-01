@@ -2,12 +2,16 @@
   "App": {
     "port": 4000,
     "database": {
-      "mongoUrl": ""
+      "mongoUrl": "mongodb+srv://suportpersonal:Meskita12@nodecluster.i8zv4cf.mongodb.net/Meteorologia?retryWrites=true&w=majority"
+    },
+    "auth": {
+      "key": "some-key",
+      "tokenExpiresIn": "20000000"
     },
     "resources": {
       "StormGlass": {
         "apiUrl": "https://api.stormglass.io/v2",
-        "apiToken": ""
+        "apiToken": "c4e02706-5ee9-11ed-a138-0242ac130002-c4e02792-5ee9-11ed-a138-0242ac130002"
       }
     }
   }
