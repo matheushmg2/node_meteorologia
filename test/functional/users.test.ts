@@ -1,5 +1,5 @@
-import { User } from '@src/models/user';
-import AuthService from '@src/services/auth';
+import { User } from '../../src/models/user';
+import AuthService from '../../src/services/auth';
 
 const mackSut = (email: string) => ({
   name: 'new user',

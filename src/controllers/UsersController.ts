@@ -1,8 +1,9 @@
 import { Controller, Get, Post } from '@overnightjs/core';
-import { User } from '@src/models/user';
+
 import { Request, Response } from 'express';
 import { BaseController } from './BaseController';
-import AuthService from '@src/services/auth';
+import AuthService from '../../src/services/auth';
+import { User } from '../../src/models/user';
 
 // Rota: /forecast
 @Controller('users')

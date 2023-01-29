@@ -2,11 +2,11 @@ import { Controller, Post, ClassMiddleware } from '@overnightjs/core';
 import { Beach } from '../../src/models/beach';
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
-import { authMiddleware } from '@src/middlewares/auth';
+import { authMiddleware } from '../../src/middlewares/auth';
 
 // Rota: /forecast
 @Controller('beaches')
-@ClassMiddleware(authMiddleware)
+@ClassMiddleware(authMiddleware) // Utilizando o Middleware, nessa classe, todos os metodos irão utilizar o Middleware
 export class BeachesController {
   @Post('')
   public async create(req: Request, res: Response): Promise<void> {

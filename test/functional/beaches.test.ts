@@ -1,6 +1,6 @@
-import { User } from '@src/models/user';
+import { User } from '../../src/models/user';
 import { Beach } from '../../src/models/beach';
-import AuthService from '@src/services/auth';
+import AuthService from '../../src/services/auth';
 
 describe('Beach functional tests | Testes funcionais de praia', () => {
   const defaultUser = {
