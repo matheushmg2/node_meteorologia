@@ -81,7 +81,7 @@ export class StormGlass {
           }`
         );
       }
-      throw new ClientRequestError(error.message);
+      throw new ClientRequestError(JSON.stringify(error.message));
     }
   }
 
