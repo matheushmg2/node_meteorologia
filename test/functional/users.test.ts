@@ -89,8 +89,6 @@ describe('Users Functional tests | Testes funcionais de usuários', () => {
         .post('/users/authenticate')
         .send({ email: newUser.email, password: 'different password' });
 
-        console.log(response.body);
-
       expect(response.status).toBe(401);
     });
   });
