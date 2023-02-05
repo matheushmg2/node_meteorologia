@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         node-version: [17.x]
-        mongodb-version: [6.x]
+        mongodb-version: [4.2]
     
     steps:
     - uses: actions/checkout@v2
