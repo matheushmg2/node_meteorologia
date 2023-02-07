@@ -4,6 +4,7 @@
   "description": "Estudo sobre Typescript Node.js API",
   "main": "index.js",
   "scripts": {
+    "git": "git pull",
     "dev": "ts-node-dev src/index.ts",
     "start": "yarn build && node dist/src/index.js",
     "lint": "eslint ./src ./test --ext .ts",
