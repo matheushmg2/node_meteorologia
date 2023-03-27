@@ -1,6 +1,6 @@
-import { InternalError } from '../../src/util/errors/internal-error';
+import { InternalError } from '~src/util/errors/internal-error';
 import config, { IConfig } from 'config';
-import * as HTTPUtil from '../../src/util/request';
+import * as HTTPUtil from '~src/util/request';
 
 export interface StormGlassPointSource {
   //noaa: number;

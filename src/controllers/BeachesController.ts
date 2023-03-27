@@ -1,8 +1,8 @@
 import { Controller, Post, ClassMiddleware } from '@overnightjs/core';
-import { Beach } from '../../src/models/beach';
+import { Beach } from '~src/models/beach';
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
-import { authMiddleware } from '../../src/middlewares/auth';
+import { authMiddleware } from '~src/middlewares/auth';
 
 // Rota: /forecast
 @Controller('beaches')

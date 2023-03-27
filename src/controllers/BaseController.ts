@@ -1,4 +1,5 @@
-import { CUSTOM_VALIDATION } from '../../src/models/user';
+import logger from '../logger';
+import { CUSTOM_VALIDATION } from '../models/user';
 import { Response } from 'express';
 import mongoose from 'mongoose';
 
@@ -18,6 +19,7 @@ export abstract class BaseController {
         res.status(clientError.code).send({ code: clientError.code, error: clientError.error});
 
     } else {
+      logger.error(error);
       res.status(500).send({ code: 500, error: 'Something went wrong!' }); // Algo deu errado!
     }
   }

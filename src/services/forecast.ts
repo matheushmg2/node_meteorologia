@@ -1,6 +1,6 @@
-import { ForecastPoint, StormGlass } from '../../src/clients/stormGlass';
-import { Beach } from '../../src/models/beach';
-import { InternalError } from '../../src/util/errors/internal-error';
+import { ForecastPoint, StormGlass } from '~src/clients/stormGlass';
+import { Beach } from '~src/models/beach';
+import { InternalError } from '~src/util/errors/internal-error';
 
 export interface TimeForeCast {
   time: string

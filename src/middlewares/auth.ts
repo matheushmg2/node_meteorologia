@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import AuthService from '../../src/services/auth';
+import AuthService from '~src/services/auth';
 
 export function authMiddleware(
   req: Partial<Request>,
