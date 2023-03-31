@@ -1,4 +1,4 @@
-import { Beach, BeachPosition } from '~src/models/beach';
+import { Beach, GeoPosition } from '~src/models/beach';
 import nock from 'nock';
 import stormGlassWeather3HoursFixture from '~test/fixtures/stormglass_weather_3_hours.json';
 import apiForecastResponse1BeachFixture from '~test/fixtures/api_forecast_response_1_beach.json';
@@ -21,11 +21,11 @@ describe('Beach forecast functional tests | Testes funcionais de previsão de pr
       lat: -33.792726,
       lng: 151.289824,
       name: 'Manly',
-      position: BeachPosition.E,
+      position: GeoPosition.E,
       user: user.id,
     };
     await new Beach(defaultBeach).save();
-    token = AuthService.generateToken(user.toJSON());
+    token = AuthService.generateToken(user.id);
   });
 
   it('should return a forecast with just a few times | deve retornar uma previsão com apenas algumas vezes', async () => {

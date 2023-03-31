@@ -1,7 +1,7 @@
 import { StormGlass } from '~src/clients/stormGlass';
 import stormGlassNormalizedResponse3HoursFixture from '~test/fixtures/stormglass_normalized_response_3_hours.json';
 import { ForeCast, ForecastProcessingInternalError } from '../forecast';
-import { Beach, BeachPosition } from '~src/models/beach';
+import { Beach, GeoPosition } from '~src/models/beach';
 
 jest.mock('~src/clients/stormGlass');
 
@@ -17,7 +17,7 @@ describe('Forecast Service', () => {
         lat: -33.792726,
         lng: 151.289824,
         name: 'Manly',
-        position: BeachPosition.E,
+        position: GeoPosition.E,
         user: 'fake-id',
       },
     ];
@@ -31,7 +31,7 @@ describe('Forecast Service', () => {
             lng: 151.289824,
             name: 'Manly',
             position: 'E',
-            rating: 1,
+            rating: 2,
             swellDirection: 64.26,
             swellHeight: 0.15,
             swellPeriod: 3.89,
@@ -51,7 +51,7 @@ describe('Forecast Service', () => {
             lng: 151.289824,
             name: 'Manly',
             position: 'E',
-            rating: 1,
+            rating: 2,
             swellDirection: 123.41,
             swellHeight: 0.21,
             swellPeriod: 3.67,
@@ -71,7 +71,7 @@ describe('Forecast Service', () => {
             lng: 151.289824,
             name: 'Manly',
             position: 'E',
-            rating: 1,
+            rating: 2,
             swellDirection: 182.56,
             swellHeight: 0.28,
             swellPeriod: 3.44,
@@ -104,7 +104,7 @@ describe('Forecast Service', () => {
         lat: -33.792726,
         lng: 151.289824,
         name: 'Manly',
-        position: BeachPosition.E,
+        position: GeoPosition.E,
         user: 'fake-id',
       },
     ];

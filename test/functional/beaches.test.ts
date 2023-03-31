@@ -14,7 +14,7 @@ describe('Beach functional tests | Testes funcionais de praia', () => {
     await Beach.deleteMany({});
     await User.deleteMany({});
     const user = await new User(defaultUser).save();
-    token = AuthService.generateToken(user.toJSON());
+    token = AuthService.generateToken(user.id);
   });
 
   describe('When creating a beach | Ao criar uma praia', () => {
@@ -54,7 +54,9 @@ describe('Beach functional tests | Testes funcionais de praia', () => {
 
       expect(response.status).toBe(422);
       expect(response.body).toEqual({
-        error:
+        code: 422,
+        error: "Unprocessable Entity",
+        message:
           'Beach validation failed: lat: Cast to Number failed for value "invalid_string" (type string) at path "lat"',
       });
     });

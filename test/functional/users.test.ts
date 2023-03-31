@@ -43,7 +43,8 @@ describe('Users Functional tests | Testes funcionais de usuários', () => {
       expect(response.status).toBe(422);
       expect(response.body).toEqual({
         code: 422,
-        error: 'User validation failed: name: Path `name` is required.',
+        error: "Unprocessable Entity",
+        message: 'User validation failed: name: Path `name` is required.',
       });
     });
 
@@ -54,7 +55,8 @@ describe('Users Functional tests | Testes funcionais de usuários', () => {
       expect(response.status).toBe(409);
       expect(response.body).toEqual({
         code: 409,
-        error: 'User validation failed: email: already exists in the database.',
+        error: "Conflict",
+        message: 'User validation failed: email: already exists in the database.',
       });
     });
   });
@@ -90,6 +92,41 @@ describe('Users Functional tests | Testes funcionais de usuários', () => {
         .send({ email: newUser.email, password: 'different password' });
 
       expect(response.status).toBe(401);
+    });
+  });
+
+  describe('When getting user profile info | Ao obter informações do perfil do usuário', () => {
+    it(`Should return the token's owner profile information | Deve retornar as informações de perfil do proprietário do token`, async () => {
+      const newUser = {
+        name: 'John Doe',
+        email: 'john@mail.com',
+        password: '1234',
+      };
+      const user = await new User(newUser).save();
+      const token = AuthService.generateToken(user.toJSON());
+      const { body, status } = await global.testRequest
+        .get('/users/me')
+        .set({ 'x-access-token': token });
+
+      expect(status).toBe(200);
+      expect(body).toMatchObject(JSON.parse(JSON.stringify({ user })));
+    });
+
+    it(`Should return Not Found, when the user is not found | Deve retornar Not Found, quando o usuário não for encontrado`, async () => {
+      const newUser = {
+        name: 'John Doe',
+        email: 'john@mail.com',
+        password: '1234',
+      };
+      //create a new user but don't save it
+      const user = new User(newUser);
+      const token = AuthService.generateToken(user.toJSON());
+      const { body, status } = await global.testRequest
+        .get('/users/me')
+        .set({ 'x-access-token': token });
+
+      expect(status).toBe(404);
+      expect(body.message).toBe('User not found!');
     });
   });
 });

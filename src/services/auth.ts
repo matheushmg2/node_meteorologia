@@ -3,8 +3,8 @@ import jwt from 'jsonwebtoken';
 import config from 'config';
 import { User } from '~src/models/user';
 
-export interface DecodedUser extends Omit<User, '_id'> {
-  id: string;
+export interface JwtToken {
+  sub: string;
 }
 
 export default class AuthService {
@@ -22,13 +22,19 @@ export default class AuthService {
     return await bcrypt.compare(password, hashedPassword);
   }
 
-  public static generateToken(payload: object): string {
+  /*public static generateToken(payload: object): string {
     return jwt.sign(payload, config.get('App.auth.key'), {
+      expiresIn: config.get('App.auth.tokenExpiresIn'),
+    });
+  }*/
+
+  public static generateToken(sub: string): string {
+    return jwt.sign({ sub }, config.get('App.auth.key'), {
       expiresIn: config.get('App.auth.tokenExpiresIn'),
     });
   }
 
-  public static decodeToken(token: string): DecodedUser {
-    return jwt.verify(token, config.get('App.auth.key')) as DecodedUser;
+  public static decodeToken(token: string): JwtToken {
+    return jwt.verify(token, config.get('App.auth.key')) as JwtToken;
   }
 }
