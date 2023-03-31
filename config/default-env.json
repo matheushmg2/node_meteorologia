@@ -1,0 +1,22 @@
+{
+  "App": {
+    "port": 4000,
+    "database": {      
+      "mongoUrl": "mongodb+srv://NOME_DO_USUÁRIO:SENHA_DO_USUÁRIO@nodecluster.i8zv4cf.mongodb.net/NOME_DO_BANCO"
+    },
+    "auth": {
+      "key": "some-key",
+      "tokenExpiresIn": "20000000"
+    },
+    "resources": {
+      "StormGlass": {
+        "apiUrl": "https://api.stormglass.io/v2",
+        "apiToken": "CÓDIGO_DA_API_STORMGLASS"
+      }
+    },
+    "logger": {
+      "enabled": true,
+      "level": "info"
+    }
+  }
+}
